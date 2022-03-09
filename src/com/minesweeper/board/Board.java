@@ -2,6 +2,7 @@ package com.minesweeper.board;
 
 import com.minesweeper.common.Location;
 import com.minesweeper.tiles.Tile;
+import java.util.*;
 
 public class Board {
     //Attributes
@@ -14,12 +15,12 @@ public class Board {
         board = new Tile[(rows+1)][(columns+1)];
         this.rows = board.length;
         this.columns = board.length;
+        Random x = new Random();
 
-
-        for (int row = 0; row <= rows; row++) {
-            for (int col = 0; col <= columns; col++) {
-                Tile newTile = new Tile(new Location(row,col), false, false, false);
-                    if (newTile.isBomb()==false) {
+        for (int row = 0; row < board.length ; row++) {
+            for (int col = 0; col < board.length; col++) {
+                Tile newTile = new Tile(new Location(row,col), x.nextBoolean(), false, false);
+                    if (newTile.isBomb() == true) {
                         bombCounter++;
                     }
                     else {
@@ -27,52 +28,31 @@ public class Board {
                     }
                     board[row][col] = newTile;
 
-                /*
-                if((row == 0) && (col == 0)){
-                    board[row][col] = "     ";
-                }
-                else if ((row == 0) && (col > 0)){
-                    board[row][col] = "[ " + col + " ]";
-                }
-                else if ((col == 0) && (row > 0)){
-                    board[row][col] = "[ " + row + " ]";
-                }
-                else {
-                    board[row][col] = "[ * ]";
-                }
-
-                 */
             }
         }
     }
+
     //Method
     public void showBoard() {
-        for(Tile[] t : board) {
-            for(Tile tile : t) {
-                System.out.print(tile);
+        for(int row = 0; row < board.length; row++) {
+            for (int col =  0; col < board.length; col++) {
+                if((row == 0) && (col == 0)){
+                    System.out.print("     ");
+                }
+                else if ((row == 0) && (col > 0)){
+                    System.out.print("[ " + col + " ]");
+                }
+                else if ((col == 0) && (row > 0)){
+                    System.out.print("[ " + row + " ]");
+                }
+                else if ((row > 0) && (col > 0) && (board[row][col].isRevealed() == false)) {
+                    System.out.print("[ * ]");
+                }
+                else if ((row > 0) && (col > 0) && (board[row][col].isRevealed() == true)) {
+                    System.out.print("[ B ]");
+                }
             }
             System.out.println();
         }
-        System.out.println(bombCounter);
-        /*
-        for (int row = 0; row <= rows; row++) {
-            for (int col = 0; col <= columns; col++) {
-                if((row == 0) && (col == 0)){
-                    System.out.print(board[row][col]);
-                }
-                else if ((row == 0) && (col > 0)){
-                    System.out.print(board[row][col]);
-                }
-                else if ((col == 0) && (row > 0)){
-                    System.out.print(board[row][col]);
-                }
-                else {
-                    System.out.print(board[row][col]);
-                }
-            }
-            System.out.println("");
-        }
-
-         */
     }
 }

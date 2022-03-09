@@ -20,8 +20,6 @@ public class Location {
         return col;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

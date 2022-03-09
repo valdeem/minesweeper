@@ -9,9 +9,9 @@ public class Tile {
 
     public Tile(Location location, boolean isRevealed, boolean isBomb, boolean isFlag) {
         this.location = location;
-        this.isRevealed = false;
-        this.isBomb = false;
-        this.isFlag = false;
+        this.isRevealed = isRevealed;
+        this.isBomb = isBomb;
+        this.isFlag = isFlag;
     }
 
     public Location getLocation() {
