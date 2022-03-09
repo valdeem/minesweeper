@@ -18,7 +18,7 @@ public class Game {
         String level = scan.nextLine();
         System.out.println("");
 
-        Board boardA = new Board(rows, columns);
-        boardA.showBoard(rows,columns);
+        Board boardA = new Board(rows, columns, level);
+        boardA.showBoard();
     }
 }

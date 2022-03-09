@@ -5,17 +5,28 @@ import com.minesweeper.tiles.Tile;
 
 public class Board {
     //Attributes
-    //int rows, columns;
-
+    int rows, columns;
+    int bombCounter;
+    Tile[][] board;
 
     //Constructor
-    public Board(int rows,int columns) {
-        //check tile attributes
-        Tile[][] board = new Tile[rows+1][columns+1];
+    public Board(int rows,int columns, String level) {
+        board = new Tile[(rows+1)][(columns+1)];
+        this.rows = board.length;
+        this.columns = board.length;
+
+
         for (int row = 0; row <= rows; row++) {
             for (int col = 0; col <= columns; col++) {
-                Tile newTile = new Tile(new Location(row,col), false);
-                        board[row][col] = row + col;
+                Tile newTile = new Tile(new Location(row,col), false, false, false);
+                    if (newTile.isBomb()==false) {
+                        bombCounter++;
+                    }
+                    else {
+                        bombCounter = bombCounter;
+                    }
+                    board[row][col] = newTile;
+
                 /*
                 if((row == 0) && (col == 0)){
                     board[row][col] = "     ";
@@ -35,15 +46,14 @@ public class Board {
         }
     }
     //Method
-    public void showBoard(int rows, int columns) {
-        Tile[][] board = new Tile[rows+1][columns+1];
-
-        for(Tile[] row : board) {
-            for(Tile newTile : row) {
-                System.out.print(board);
+    public void showBoard() {
+        for(Tile[] t : board) {
+            for(Tile tile : t) {
+                System.out.print(tile);
             }
             System.out.println();
         }
+        System.out.println(bombCounter);
         /*
         for (int row = 0; row <= rows; row++) {
             for (int col = 0; col <= columns; col++) {

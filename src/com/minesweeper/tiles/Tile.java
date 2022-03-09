@@ -7,7 +7,7 @@ public class Tile {
     private boolean isBomb;
     private boolean isFlag;
 
-    public Tile(Location location, boolean isRevealed) {
+    public Tile(Location location, boolean isRevealed, boolean isBomb, boolean isFlag) {
         this.location = location;
         this.isRevealed = false;
         this.isBomb = false;
@@ -45,10 +45,10 @@ public class Tile {
     @Override
     public String toString() {
         return "Tile{" +
-                "location=" + location +
+                "location=" + location.getRow() + location.getCol() +
                 ", isRevealed=" + isRevealed +
                 ", isBomb=" + isBomb +
                 ", isFlag=" + isFlag +
-                '}';
+                "}  ";
     }
 }
