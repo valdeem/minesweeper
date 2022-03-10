@@ -4,14 +4,24 @@ import com.minesweeper.common.Location;
 public class Tile {
     private final Location location;
     private boolean isRevealed;
-    private boolean isBomb;
+    private boolean isMine;
     private boolean isFlag;
+    private boolean mineCounter;
 
-    public Tile(Location location, boolean isRevealed, boolean isBomb, boolean isFlag) {
+    public Tile(Location location, boolean isRevealed, boolean isMine, boolean isFlag, boolean mineCounter) {
         this.location = location;
         this.isRevealed = isRevealed;
-        this.isBomb = isBomb;
+        this.isMine = isMine;
         this.isFlag = isFlag;
+        this.mineCounter = mineCounter;
+    }
+
+    public boolean isMineCounter() {
+        return mineCounter;
+    }
+
+    public void setMineCounter(boolean mineCounter) {
+        this.mineCounter = mineCounter;
     }
 
     public Location getLocation() {
@@ -22,20 +32,20 @@ public class Tile {
         return isRevealed;
     }
 
-    public boolean isBomb() {
-        return isBomb;
-    }
-
-    public boolean isFlag() {
-        return isFlag;
-    }
-
     public void setRevealed(boolean revealed) {
         isRevealed = revealed;
     }
 
-    public void setBomb(boolean bomb) {
-        isBomb = bomb;
+    public boolean isMine() {
+        return isMine;
+    }
+
+    public void setMine(boolean mine) {
+        isMine = mine;
+    }
+
+    public boolean isFlag() {
+        return isFlag;
     }
 
     public void setFlag(boolean flag) {
@@ -47,7 +57,7 @@ public class Tile {
         return "Tile{" +
                 "location=" + location.getRow() + location.getCol() +
                 ", isRevealed=" + isRevealed +
-                ", isBomb=" + isBomb +
+                ", isBomb=" + isMine +
                 ", isFlag=" + isFlag +
                 "}  ";
     }

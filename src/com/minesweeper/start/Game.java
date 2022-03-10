@@ -1,5 +1,7 @@
 package com.minesweeper;
 import com.minesweeper.board.Board;
+import com.minesweeper.tiles.Tile;
+
 import java.util.*;
 
 public class Game {
@@ -12,13 +14,14 @@ public class Game {
         int rows = scan.nextInt();
         System.out.print("Type the number of columns: ");
         int columns = scan.nextInt();
-        System.out.print("Set the game difficulty level ");
-        System.out.print("(e)asy, (a)verage, (d)ifficult): ");
-        scan.nextLine();
-        String level = scan.nextLine();
+        System.out.print("Set the number of mines ");
+        System.out.print("10 <= mimes <= 50: ");
+        int level = scan.nextInt();
         System.out.println("");
 
         Board boardA = new Board(rows, columns, level);
         boardA.showBoard();
+
+
     }
 }
